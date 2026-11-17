@@ -35,6 +35,9 @@ const i18n = {
     open_repo: "المستودع ↗",
     search_placeholder: "ابحث باسم الأداة، التقنية، أو الوظيفة (مثال: rag, agent, nlp, bachelier, merkle)...",
     footer_rights: "© 2026 المهندس محمود بك النمر (Eng. Mahmoud Bek ElNemer) · شركة حلول النمر الرقمية",
+    theme_light: "فاتح",
+    theme_dark: "داكن",
+    ad_label: "إعلان معتمد / Sponsored",
     page_info: (cur, total) => `الصفحة ${cur} من ${total}`
   },
   en: {
@@ -61,16 +64,45 @@ const i18n = {
     open_repo: "GitHub ↗",
     search_placeholder: "Search tool name, topic, or keyword (e.g. rag, agent, nlp, bachelier, merkle)...",
     footer_rights: "© 2026 Eng. Mahmoud Bek ElNemer · Nemer Digital Solutions",
+    theme_light: "Light",
+    theme_dark: "Dark",
+    ad_label: "Sponsored Advertisement",
     page_info: (cur, total) => `Page ${cur} of ${total}`
   }
 };
 
 // Initialize
 document.addEventListener("DOMContentLoaded", async () => {
+  setupThemeToggle();
   setupLanguageToggle();
   setupSearch();
   await loadData();
 });
+
+function setupThemeToggle() {
+  const btn = document.getElementById("themeToggle");
+  const icon = document.getElementById("themeIcon");
+  const label = document.getElementById("themeLabel");
+  
+  // Default to light theme as requested by user
+  const savedTheme = localStorage.getItem("elnemer_theme") || "light";
+  applyTheme(savedTheme);
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") || "light";
+      const next = current === "light" ? "dark" : "light";
+      applyTheme(next);
+      localStorage.setItem("elnemer_theme", next);
+    });
+  }
+
+  function applyTheme(th) {
+    document.documentElement.setAttribute("data-theme", th);
+    if (icon) icon.textContent = th === "light" ? "☀️" : "🌙";
+    if (label) label.textContent = th === "light" ? i18n[currentLang].theme_light : i18n[currentLang].theme_dark;
+  }
+}
 
 function setupLanguageToggle() {
   const btn = document.getElementById("langToggle");
@@ -91,6 +123,11 @@ function applyI18n() {
     const key = el.getAttribute("data-i18n");
     if (t[key]) el.textContent = t[key];
   });
+  const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+  const themeLabel = document.getElementById("themeLabel");
+  if (themeLabel) {
+    themeLabel.textContent = currentTheme === "light" ? t.theme_light : t.theme_dark;
+  }
   document.getElementById("searchInput").placeholder = t.search_placeholder;
 }
 

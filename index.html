@@ -1,14 +1,87 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ElNeMeR Mega Hub — بوابة الأدوات السيادية مفتوحة المصدر (7,448+ Repos)</title>
-  <meta name="description" content="البوابة الرسمية الشاملة للـ 7,448 مستودعاً مفتوح المصدر للمهندس محمود بك النمر عبر 8 حزم تخصصية و10 لغات برمجية.">
+  <title>ElNeMeR Mega Hub — موسوعة وأدوات الذكاء الاصطناعي السيادية (7,448+ Repos & 7,201 Tools)</title>
+  <meta name="description" content="البوابة الرسمية الشاملة لترسانة حلول وأدوات الذكاء الاصطناعي السيادية للمهندس محمود بك النمر. فهرس فوري لأكثر من 7,448 مستودعاً و 7,201 أداة عبر 8 حزم تخصصية كبرى و10 لغات برمجية.">
+  <meta name="keywords" content="ElNeMeR, Mahmoud Bek ElNemer, AI Tools, Artificial Intelligence, Open Source, Python AI, PyPI, npm, Rust Crates, Go Dev, Islamic AI, Cyber Security, Arabic NLP, Quantitative Finance, BioMed AI, Agent Swarms">
+  <meta name="author" content="Eng. Mahmoud Bek ElNemer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://elnemer-ai.com/megahub/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://elnemer-ai.com/megahub/">
+  <meta property="og:site_name" content="ElNeMeR AI Mega Hub">
+  <meta property="og:title" content="ElNeMeR Mega Hub — موسوعة وأدوات الذكاء الاصطناعي السيادية">
+  <meta property="og:description" content="فهرس فوري وبحث شامل في 7,448+ مستودعاً مفتوح المصدر و 7,201 أداة ذكاء اصطناعي سيادية مع إمكانية التثبيت الفوري بنقرة واحدة.">
+  <meta property="og:locale" content="ar_AR">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:creator" content="@ElNeMeR70">
+  <meta name="twitter:title" content="ElNeMeR Mega Hub — ترسانة الـ 7,448 مستودع و 7,201 أداة AI">
+  <meta name="twitter:description" content="تصفح وبحث فوري في أكبر تكتل برمجي سيادي مفتوح المصدر للمهندس محمود بك النمر بـ 10 لغات برمجية.">
+
+  <!-- JSON-LD Structured Data for Google SEO Rich Snippets -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://elnemer-ai.com/megahub/#website",
+        "url": "https://elnemer-ai.com/megahub/",
+        "name": "ElNeMeR AI Mega Hub",
+        "description": "فهرس وأدوات الذكاء الاصطناعي مفتوحة المصدر - 7,448 مستودع و 7,201 أداة",
+        "inLanguage": ["ar", "en"],
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://elnemer-ai.com/megahub/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://github.com/ElNeMeR70#person",
+        "name": "Eng. Mahmoud Bek ElNemer",
+        "alternateName": "المهندس محمود بك النمر",
+        "url": "https://github.com/ElNeMeR70",
+        "jobTitle": "Chief AI Architect & Founder",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "ElNeMeR AI Solutions",
+          "url": "https://elnemer-ai.com"
+        },
+        "sameAs": [
+          "https://github.com/ElNeMeR70",
+          "https://elnemer-ai.com"
+        ]
+      },
+      {
+        "@type": "DataCatalog",
+        "@id": "https://elnemer-ai.com/megahub/#catalog",
+        "name": "ElNeMeR 7,201 Sovereign Tools Catalogue",
+        "description": "8 Specialized Mega-Suites covering AI, Arabic NLP, Cyber Security, Quantitative Finance, Biomedical AI, Multi-Agent Systems, Polyglot Runtimes, and Islamic Knowledge.",
+        "creator": {
+          "@id": "https://github.com/ElNeMeR70#person"
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+
+  <!-- Google AdSense Script Integration -->
+  <!-- وضع شفرة AdSense الرسمية: يمكنك استبدال ca-pub-XXXXXXXXXXXXXXXX بمعرف الناشر الخاص بحسابك -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
   <!-- Header -->
@@ -22,11 +95,15 @@
         </div>
       </div>
       <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <span id="themeIcon">☀️</span>
+          <span id="themeLabel" data-i18n="theme_light">فاتح</span>
+        </button>
+        <button id="langToggle" class="btn btn-ghost">English</button>
         <a href="https://github.com/ElNeMeR70" target="_blank" rel="noopener" class="btn btn-outline">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           <span data-i18n="github_profile">GitHub (@ElNeMeR70)</span>
         </a>
-        <button id="langToggle" class="btn btn-ghost">English</button>
       </div>
     </div>
   </header>
@@ -122,6 +199,21 @@
     </div>
   </section>
 
+  <!-- Top Leaderboard Ad Unit -->
+  <div class="ad-slot-wrapper">
+    <div class="ad-slot-box">
+      <span class="ad-disclosure" data-i18n="ad_label">إعلان معتمد / Sponsored</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <div class="ad-placeholder-hint">📢 مساحة إعلانية متوافقة مع معايير Google AdSense (Top Leaderboard Banner)</div>
+    </div>
+  </div>
+
   <!-- Main Tools Explorer -->
   <main class="main-container">
     <!-- Search Bar -->
@@ -152,6 +244,21 @@
       </div>
     </div>
 
+    <!-- Mid-Page In-Feed Ad Unit -->
+    <div class="ad-slot-wrapper" style="margin: 1.25rem 0 1.75rem 0;">
+      <div class="ad-slot-box">
+        <span class="ad-disclosure" data-i18n="ad_label">إعلان معتمد / Sponsored</span>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+             data-ad-slot="9876543210"
+             data-ad-format="horizontal"
+             data-full-width-responsive="true"></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        <div class="ad-placeholder-hint">📢 مساحة إعلانية متوافقة مع Google AdSense (In-Feed / Content Banner)</div>
+      </div>
+    </div>
+
     <!-- Tools Grid -->
     <div class="tools-grid" id="toolsGrid">
       <div class="loading" data-i18n="loading">جاري تحميل وتجهيز الفهرس الشامل للأدوات...</div>
@@ -170,6 +277,21 @@
     <div class="modal-card">
       <button class="modal-close" id="modalClose">✕</button>
       <div id="modalContent"></div>
+    </div>
+  </div>
+
+  <!-- Bottom Anchor / Footer Ad Unit -->
+  <div class="ad-slot-wrapper" style="margin-top: 2rem; margin-bottom: 2.5rem;">
+    <div class="ad-slot-box">
+      <span class="ad-disclosure" data-i18n="ad_label">إعلان معتمد / Sponsored</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+           data-ad-slot="5432167890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+      <div class="ad-placeholder-hint">📢 مساحة إعلانية متوافقة مع Google AdSense (Bottom Leaderboard)</div>
     </div>
   </div>
 
