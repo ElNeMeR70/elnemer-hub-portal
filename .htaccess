@@ -1,0 +1,15 @@
+# Apache / LiteSpeed Rewrite Rules for ElNeMeR Mega Hub
+RewriteEngine On
+RewriteBase /megahub/
+
+# Allow direct file and directory access
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Clean URL for individual tool pages
+# /megahub/tool/tool-name -> /megahub/tool.php?name=tool-name
+RewriteRule ^tool/([a-zA-Z0-9_\-]+)/?$ tool.php?name=$1 [L,QSA]
+
+# Sitemap route
+RewriteRule ^sitemap\.xml$ sitemap.php [L,QSA]

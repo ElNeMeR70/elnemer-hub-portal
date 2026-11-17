@@ -286,14 +286,16 @@ function renderTools() {
   const start = (currentPage - 1) * PAGE_SIZE;
   const slice = filteredTools.slice(start, start + PAGE_SIZE);
 
-  grid.innerHTML = slice.map(item => {
+  let cardsHtml = '';
+  slice.forEach((item, index) => {
     const suite = allData.suites[item.s];
     const suiteName = currentLang === 'ar' ? suite.ar : suite.en;
     const lang = allData.languages[item.l];
     const repoUrl = `https://github.com/ElNeMeR70/${item.n}`;
     const cloneCmd = `git clone ${repoUrl}.git`;
+    const toolPageUrl = `tool.php?name=${encodeURIComponent(item.n)}`;
 
-    return `
+    cardsHtml += `
       <div class="tool-card" onclick="openDetail('${item.n}')">
         <div>
           <div class="card-tags">
@@ -303,17 +305,37 @@ function renderTools() {
           <h4 class="tool-title" style="margin-top:0.75rem;">${item.t}</h4>
           <p class="tool-name-code" style="margin-top:0.35rem;">${item.n}</p>
         </div>
-        <div class="card-actions" onclick="event.stopPropagation()">
-          <button class="btn btn-ghost" onclick="copyCode('${cloneCmd}', this)">
+        <div class="card-actions" onclick="event.stopPropagation()" style="flex-wrap:wrap; gap:0.4rem;">
+          <a href="${toolPageUrl}" class="btn btn-outline" style="background:#ffffff; color:#0284c7; border:1px solid #bae6fd; font-weight:700; font-size:0.8rem;">
+            📄 الشرح والتثبيت
+          </a>
+          <button class="btn btn-ghost" onclick="copyCode('${cloneCmd}', this)" style="font-size:0.8rem;">
             <span>📋</span> <span class="btn-text">${t.copy_clone}</span>
           </button>
-          <a href="${repoUrl}" target="_blank" rel="noopener" class="btn btn-outline">
+          <a href="${repoUrl}" target="_blank" rel="noopener" class="btn btn-outline" style="font-size:0.8rem;">
             ${t.open_repo}
           </a>
         </div>
       </div>
     `;
-  }).join("");
+
+    // Insert high-converting Multiplex Ad unit every 12 cards
+    if ((index + 1) % 12 === 0 && index !== slice.length - 1) {
+      cardsHtml += `
+        <div class="tool-card tool-card-ad" style="grid-column: 1 / -1; padding: 1.25rem; background: #ffffff; border: 1px dashed #0284c7; border-radius:12px; box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+          <span class="ad-disclosure" style="color:#0284c7; font-weight:800; margin-bottom:0.5rem; display:block;">إعلان مقترح للمطورين / Developer Ad</span>
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-format="autorelaxed"
+               data-ad-client="ca-pub-6374003238265902"
+               data-ad-slot="2872380691"></ins>
+        </div>
+      `;
+    }
+  });
+
+  grid.innerHTML = cardsHtml;
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
 }
 
 function openDetail(name) {
@@ -324,6 +346,7 @@ function openDetail(name) {
   const lang = allData.languages[item.l];
   const repoUrl = `https://github.com/ElNeMeR70/${item.n}`;
   const cloneCmd = `git clone ${repoUrl}.git`;
+  const toolPageUrl = `tool.php?name=${encodeURIComponent(item.n)}`;
 
   const content = document.getElementById("modalContent");
   content.innerHTML = `
@@ -342,14 +365,29 @@ function openDetail(name) {
       </div>
     </div>
 
-    <div style="display:flex;gap:0.75rem;margin-top:2rem;">
-      <a href="${repoUrl}" target="_blank" rel="noopener" class="btn btn-outline" style="flex:1;justify-content:center;background:var(--primary);color:#fff;border-color:var(--primary);">
-        فتح المستودع على GitHub ↗
+    <!-- AdSense banner in modal -->
+    <div style="margin: 1.5rem 0; padding: 0.75rem; background:#f8fafc; border:1px dashed #cbd5e1; border-radius:8px; text-align:center;">
+      <span style="font-size:0.65rem; color:#94a3b8; font-weight:700; display:block; margin-bottom:0.25rem;">SPONSORED</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-6374003238265902"
+           data-ad-slot="2872380691"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+    </div>
+
+    <div style="display:flex;gap:0.75rem;margin-top:1.5rem;flex-wrap:wrap;">
+      <a href="${toolPageUrl}" target="_blank" class="btn btn-outline" style="flex:1;justify-content:center;background:#0284c7;color:#fff;border-color:#0284c7;font-weight:700;min-width:200px;">
+        📄 صفحة الشرح والمواصفات الكاملة (SEO Page) ↗
+      </a>
+      <a href="${repoUrl}" target="_blank" rel="noopener" class="btn btn-outline" style="flex:1;justify-content:center;background:#ffffff;color:#0f172a;border-color:#cbd5e1;font-weight:700;min-width:160px;">
+        GitHub ↗
       </a>
     </div>
   `;
 
   document.getElementById("modalBackdrop").style.display = "flex";
+  try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e){}
 }
 
 function closeModal() {
