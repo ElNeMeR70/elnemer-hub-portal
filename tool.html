@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 
-  <!-- Google AdSense Official Script Integration -->
+  <!-- Official Google AdSense Integration -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6374003238265902" crossorigin="anonymous"></script>
 
   <style>
@@ -18,6 +18,7 @@
     .page-container { max-width: 1100px; margin: 1.5rem auto 3rem auto; padding: 0 1.25rem; }
     .breadcrumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: #64748b; margin-bottom: 1.5rem; flex-wrap: wrap; }
     .breadcrumbs a { color: #0284c7; text-decoration: none; font-weight: 600; }
+    .breadcrumbs a:hover { text-decoration: underline; }
     .tool-hero-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2.25rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.06); margin-bottom: 2rem; }
     .tool-badges { display: flex; gap: 0.6rem; margin-bottom: 1rem; flex-wrap: wrap; }
     .badge-suite { background: #e0f2fe; color: #0369a1; padding: 0.3rem 0.75rem; border-radius: 9999px; font-size: 0.8rem; font-weight: 700; }
@@ -27,35 +28,47 @@
     .tool-desc-lead { font-size: 1.15rem; line-height: 1.8; color: #334155; margin-bottom: 2rem; }
     .content-section { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.04); margin-bottom: 2rem; }
     .content-section h3 { font-size: 1.4rem; font-weight: 800; color: #0f172a; margin-bottom: 1.25rem; border-bottom: 2px solid #f1f5f9; padding-bottom: 0.75rem; }
+    .features-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+    .feature-item { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; }
+    .feature-item h4 { font-size: 1rem; font-weight: 700; color: #0284c7; margin-bottom: 0.35rem; }
+    .feature-item p { font-size: 0.9rem; color: #64748b; line-height: 1.5; }
     .terminal-box { background: #0f172a; color: #f8fafc; border-radius: 12px; padding: 1.25rem; font-family: 'JetBrains Mono', monospace; position: relative; margin-bottom: 1.25rem; direction: ltr; text-align: left; }
     .terminal-box code { color: #38bdf8; font-size: 0.95rem; }
     .terminal-copy-btn { position: absolute; top: 0.75rem; right: 0.75rem; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); color: #ffffff; padding: 0.3rem 0.65rem; border-radius: 6px; font-size: 0.75rem; cursor: pointer; }
     .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; margin-top: 1rem; }
-    .related-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: all 0.2s; }
+    .related-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1.25rem; text-decoration: none; color: inherit; transition: all 0.2s; display: flex; flex-direction: column; }
     .related-card:hover { border-color: #0284c7; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1); }
+    .lang-btn { background: #ffffff; border: 1px solid #cbd5e1; color: #0f172a; padding: 0.45rem 0.85rem; border-radius: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; }
+    .lang-btn:hover { border-color: #0284c7; color: #0284c7; }
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <header class="navbar" style="background:#ffffff; border-bottom:1px solid #e2e8f0;">
-    <div class="nav-container" style="max-width:1100px; margin:0 auto; padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center;">
+    <div class="nav-container" style="max-width:1100px; margin:0 auto; padding:0.85rem 1.25rem; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem;">
       <a href="index.html" class="brand" style="display:flex; align-items:center; gap:0.75rem; text-decoration:none; color:inherit;">
         <div class="logo-badge" style="background:#e0f2fe; padding:0.4rem 0.6rem; border-radius:10px; font-size:1.5rem;">🏛️</div>
         <div>
-          <h1 class="brand-title" style="font-size:1.15rem; font-weight:800; color:#0f172a; margin:0;">موسوعة النمر البرمجية</h1>
-          <p class="brand-sub" style="font-size:0.75rem; color:#64748b; margin:0;">المهندس محمود بك النمر · Mega Hub</p>
+          <h1 class="brand-title" id="navTitle" style="font-size:1.15rem; font-weight:800; color:#0f172a; margin:0;">موسوعة النمر البرمجية</h1>
+          <p class="brand-sub" id="navSub" style="font-size:0.75rem; color:#64748b; margin:0;">المهندس محمود بك النمر · Mega Hub</p>
         </div>
       </a>
-      <a href="index.html" class="btn btn-outline" style="border:1px solid #0284c7; background:#0284c7; color:#ffffff; padding:0.45rem 0.9rem; border-radius:8px; font-size:0.85rem; font-weight:700;">
-        🔍 فهرس الأدوات
-      </a>
+      <div style="display:flex; gap:0.65rem; align-items:center;">
+        <button id="langToggleBtn" class="lang-btn">🌐 English</button>
+        <a href="index.html" class="btn btn-outline" id="navDirBtn" style="border:1px solid #cbd5e1; padding:0.45rem 0.9rem; border-radius:8px; font-size:0.85rem; font-weight:700; color:#0284c7; background:#ffffff;">
+          🔍 فهرس الأدوات
+        </a>
+        <a id="navGithubBtn" href="https://github.com/ElNeMeR70" target="_blank" rel="noopener" class="btn btn-outline" style="border:1px solid #0284c7; background:#0284c7; color:#ffffff; padding:0.45rem 0.9rem; border-radius:8px; font-size:0.85rem; font-weight:700;">
+          GitHub ↗
+        </a>
+      </div>
     </div>
   </header>
 
   <div class="page-container">
     <nav class="breadcrumbs">
-      <a href="index.html">الرئيسية (Mega Hub)</a>
+      <a href="index.html" id="bcHome">الرئيسية (Mega Hub)</a>
       <span>/</span>
       <span id="bcSuite">الحزمة السيادية</span>
       <span>/</span>
@@ -65,7 +78,7 @@
     <!-- TOP LEADERBOARD AD UNIT -->
     <div class="ad-slot-wrapper" style="margin: 1rem 0 1.5rem 0;">
       <div class="ad-slot-box">
-        <span class="ad-disclosure">إعلان ممول / Sponsored</span>
+        <span class="ad-disclosure" id="adTopLabel">إعلان ممول / Sponsored</span>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-6374003238265902"
@@ -84,7 +97,7 @@
     <!-- IN-ARTICLE AD UNIT -->
     <div class="ad-slot-wrapper" style="margin: 1.5rem 0;">
       <div class="ad-slot-box">
-        <span class="ad-disclosure">إعلان ممول / Sponsored</span>
+        <span class="ad-disclosure" id="adMidLabel">إعلان ممول / Sponsored</span>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-6374003238265902"
@@ -97,16 +110,16 @@
 
     <!-- Quick Install Section -->
     <section class="content-section" id="installSection" style="display:none;">
-      <h3>🚀 التثبيت والتشغيل السريع (Quick Installation & Build)</h3>
+      <h3 id="installHeading">🚀 التثبيت والتشغيل السريع (Quick Installation & Build)</h3>
       <div style="margin-bottom:1rem;">
-        <label style="display:block; font-weight:700; font-size:0.85rem; color:#475569; margin-bottom:0.35rem;">1. استنساخ المستودع عبر Git:</label>
+        <label id="lblClone" style="display:block; font-weight:700; font-size:0.85rem; color:#475569; margin-bottom:0.35rem;">1. استنساخ المستودع عبر Git:</label>
         <div class="terminal-box">
           <code id="cloneCmd">git clone ...</code>
           <button class="terminal-copy-btn" onclick="copyFromEl('cloneCmd', this)">Copy</button>
         </div>
       </div>
       <div>
-        <label style="display:block; font-weight:700; font-size:0.85rem; color:#475569; margin-bottom:0.35rem;">2. أمر التثبيت والبناء المباشر:</label>
+        <label id="lblBuild" style="display:block; font-weight:700; font-size:0.85rem; color:#475569; margin-bottom:0.35rem;">2. أمر التثبيت والبناء المباشر:</label>
         <div class="terminal-box">
           <code id="buildCmd">build ...</code>
           <button class="terminal-copy-btn" onclick="copyFromEl('buildCmd', this)">Copy</button>
@@ -117,7 +130,7 @@
     <!-- MULTIPLEX RECOMMENDATION AD UNIT -->
     <div class="ad-slot-wrapper" style="margin: 2rem 0;">
       <div class="ad-slot-box" style="padding:1.25rem;">
-        <span class="ad-disclosure" style="color:#0284c7; font-weight:800;">إعلانات مقترحة للمطورين / Recommended Ads</span>
+        <span class="ad-disclosure" id="adMultiLabel" style="color:#0284c7; font-weight:800;">إعلانات مقترحة للمطورين / Recommended Ads</span>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-format="autorelaxed"
@@ -129,14 +142,14 @@
 
     <!-- Related Tools -->
     <section class="content-section" id="relatedSection" style="display:none;">
-      <h3>🔗 أدوات مقترحة ذات صلة</h3>
+      <h3 id="relatedHeading">🔗 أدوات مقترحة ذات صلة</h3>
       <div class="related-grid" id="relatedGrid"></div>
     </section>
 
     <!-- BOTTOM ANCHOR AD UNIT -->
     <div class="ad-slot-wrapper" style="margin: 2rem 0;">
       <div class="ad-slot-box">
-        <span class="ad-disclosure">إعلان ممول / Sponsored</span>
+        <span class="ad-disclosure" id="adBottomLabel">إعلان ممول / Sponsored</span>
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-6374003238265902"
@@ -150,73 +163,140 @@
 
   <footer class="footer" style="background:#ffffff; border-top:1px solid #e2e8f0; padding:2rem 1rem; text-align:center;">
     <div class="footer-container" style="max-width:1100px; margin:0 auto; color:#64748b; font-size:0.9rem;">
-      <p>© 2026 المهندس محمود بك النمر (Eng. Mahmoud Bek ElNemer) · شركة حلول النمر الرقمية</p>
+      <p id="footerRights">© 2026 Eng. Mahmoud Bek ElNemer (المهندس محمود بك النمر) · Nemer Digital Solutions</p>
     </div>
   </footer>
 
   <script>
+    let currentLang = 'ar';
+    let toolData = null;
+    let currentTool = null;
+
+    const descriptions = {
+      ar: [
+        "مكتبة برمجية متخصصة ومعتمدة لمعالجة وفهرسة العلوم الشرعية والإسلامية، وتوفر خوارزميات فائقة السرعة للتحقق والتخريج والحساب الفقهي الدقيق.",
+        "خوارزمية وهيكل بيانات متقدم متعدد اللغات لحل المسائل الحسابية المعقدة في زمن تنفيذ قياسي واستغلال أمثل للذاكرة.",
+        "خادم ومحرك إجراءات متوافق مع بروتوكول MCP (Model Context Protocol) لتزويد نماذج الذكاء الاصطناعي بقدرات استدعاء دوال حية والربط مع بيئات التشغيل.",
+        "أداة فحص واختبار أمني واختراق أخلاقي سيبراني لكشف الثغرات الأمنية، وتدقيق التشفير، ومراقبة حركة البيانات واكتشاف الشذوذ الأمني.",
+        "نموذج ذكاء اصطناعي ونظام أسراب وكلاء مستقلين (Multi-Agent Swarm) لإدارة المهام الذاتية والتخطيط المنطقي المتوازي.",
+        "محرك معالجة لغة عربية طبيعية (Arabic NLP) يوفر تجذير الكلمات، الإعراب الآلي، ضبط التشكيل وتصنيف النصوص بدقة فائقة.",
+        "محرك تحليل مالي وإدارة مخاطر كمية (Quantitative Finance & Risk) لحساب احتمالات السوق، تسعير المشتقات ونماذج المحافظ الاستثمارية.",
+        "نظام ذكاء اصطناعي معلوماتي حيوي (Bioinformatics & Genomic AI) لتحليل التسلسلات الجينومية والبروتينية والتنبؤ بالبنى الجزيئية."
+      ],
+      en: [
+        "High-performance algorithmic library for processing, indexing, and verifying Islamic jurisprudence, Hadith chains (Isnad DAG), and astronomical solar-lunar calculations with microsecond execution.",
+        "Advanced polyglot data structures and algorithmic implementations, optimized for minimal memory footprint and extreme throughput under concurrent load.",
+        "Production-ready Model Context Protocol (MCP) server, providing LLMs and autonomous agents with low-latency tool execution and typed schemas.",
+        "Sovereign cyber defense and vulnerability assessment tool, specializing in automated vulnerability discovery, cryptographic auditing, and network security inspection.",
+        "Autonomous multi-agent orchestration runtime, enabling parallel swarm collaboration, chain-of-thought planning, and deterministic execution.",
+        "Deep Arabic Natural Language Processing engine, featuring morphological stemmers, diacritic restoration, syntax parsers, and named entity recognition.",
+        "Institutional-grade quantitative analytics and financial risk engine, implementing Monte Carlo simulations, volatility surfaces, and Black-Scholes/Bachelier pricing.",
+        "Computational biology and genomic AI toolkit, engineered for sequence alignment, MSA matrix calculations, variant impact scoring, and structural analysis."
+      ]
+    };
+
     document.addEventListener("DOMContentLoaded", async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const name = urlParams.get('name') || '';
+      currentLang = urlParams.get('lang') === 'en' ? 'en' : 'ar';
 
       const resp = await fetch('tools.json');
-      const data = await resp.json();
+      toolData = await resp.json();
+      currentTool = toolData.tools.find(t => t.n === name) || toolData.tools[0];
 
-      let tool = data.tools.find(t => t.n === name) || data.tools[0];
-      const suite = data.suites[tool.s] || { ar: 'حزمة سيادية', en: 'Sovereign Suite' };
-      const lang = (data.languages[tool.l] || 'python').toUpperCase();
-      const repoUrl = `https://github.com/ElNeMeR70/${tool.n}`;
+      document.getElementById('langToggleBtn').addEventListener('click', toggleLanguage);
+      renderPage();
+    });
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      renderPage();
+    }
+
+    function renderPage() {
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+
+      const isAr = currentLang === 'ar';
+      const suite = toolData.suites[currentTool.s] || { ar: 'حزمة سيادية', en: 'Sovereign Suite' };
+      const suiteName = isAr ? suite.ar : suite.en;
+      const lang = (toolData.languages[currentTool.l] || 'python').toUpperCase();
+      const repoUrl = `https://github.com/ElNeMeR70/${currentTool.n}`;
       const cloneText = `git clone ${repoUrl}.git`;
 
-      document.getElementById('pageTitle').textContent = `${tool.t} (${tool.n}) — أداة ${lang} | م. محمود بك النمر`;
-      document.getElementById('bcSuite').textContent = suite.ar;
-      document.getElementById('bcTitle').textContent = tool.t;
+      document.getElementById('langToggleBtn').textContent = isAr ? '🌐 English' : '🌐 العربية';
+      document.getElementById('pageTitle').textContent = isAr
+        ? `${currentTool.t} (${currentTool.n}) — أداة ${lang} في ${suiteName} | م. محمود بك النمر`
+        : `${currentTool.t} (${currentTool.n}) — Sovereign ${lang} Tool in ${suiteName} | Eng. Mahmoud Bek ElNemer`;
+
+      document.getElementById('navTitle').textContent = isAr ? 'موسوعة النمر البرمجية' : 'ElNeMeR AI Encyclopedia';
+      document.getElementById('navSub').textContent = isAr ? 'المهندس محمود بك النمر · Mega Hub' : 'Eng. Mahmoud Bek ElNemer · Mega Hub';
+      document.getElementById('navDirBtn').textContent = isAr ? '🔍 فهرس الأدوات' : '🔍 Directory';
+      document.getElementById('bcHome').textContent = isAr ? 'الرئيسية (Mega Hub)' : 'Home (Mega Hub)';
+      document.getElementById('bcSuite').textContent = suiteName;
+      document.getElementById('bcTitle').textContent = currentTool.t;
+
+      const desc = descriptions[currentLang][currentTool.s] || (isAr ? "أداة برمجية سيادية متقدمة." : "Advanced sovereign software tool.");
 
       const hero = document.getElementById('heroCard');
       hero.innerHTML = `
         <div class="tool-badges">
-          <span class="badge-suite">${suite.ar}</span>
+          <span class="badge-suite">${suiteName}</span>
           <span class="badge-lang">${lang}</span>
           <span class="badge-suite" style="background:#dcfce7; color:#15803d;">v1.0.0 Stable</span>
+          <span class="badge-suite" style="background:#fef3c7; color:#b45309;">MIT License</span>
         </div>
-        <h1 class="tool-hero-title">${tool.t}</h1>
-        <div class="tool-id-name">${tool.n}</div>
+        <h1 class="tool-hero-title">${currentTool.t}</h1>
+        <div class="tool-id-name">${currentTool.n}</div>
         <p class="tool-desc-lead">
-          أداة برمجية سيادية متقدمة مطورة بلغة <b>${lang}</b> بواسطة <b>المهندس محمود بك النمر</b> لتوفير حلول فورية وموثوقة ضمن حزمة ${suite.ar}.
+          ${desc} ${isAr ? 'تم تصميم وتطوير هذه الأداة بأعلى معايير الأداء والاعتمادية من قِبل <b>المهندس محمود بك النمر</b> لتكون قابلة للتشغيل المباشر كحزمة مستقلة أو دمجها في خطوط الإنتاج والأنظمة السحابية.' : 'Engineered and maintained with rigorous performance and deterministic standards by <b>Eng. Mahmoud Bek ElNemer</b> for standalone CLI deployment or direct cloud microservice integration.'}
         </p>
         <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
-          <a href="${repoUrl}" target="_blank" rel="noopener" style="background:#0284c7; color:#ffffff; padding:0.65rem 1.25rem; border-radius:10px; font-weight:700; text-decoration:none;">
-            المستودع الكامل على GitHub ↗
+          <button class="btn" onclick="copyText('${cloneText}', this)" style="background:#0284c7; color:#ffffff; border:none; padding:0.65rem 1.25rem; border-radius:10px; font-weight:700; cursor:pointer; font-size:0.95rem;">
+            📋 ${isAr ? 'نسخ أمر Clone' : 'Copy Git Clone'}
+          </button>
+          <a href="${repoUrl}" target="_blank" rel="noopener" style="background:#f1f5f9; color:#0f172a; border:1px solid #cbd5e1; padding:0.65rem 1.25rem; border-radius:10px; font-weight:700; text-decoration:none; font-size:0.95rem;">
+            ${isAr ? 'المستودع الكامل على GitHub ↗' : 'View on GitHub ↗'}
           </a>
         </div>
       `;
 
+      document.getElementById('installHeading').textContent = isAr ? '🚀 التثبيت والتشغيل السريع (Quick Installation & Build)' : '🚀 Quick Installation & Build Guide';
+      document.getElementById('lblClone').textContent = isAr ? '1. استنساخ المستودع عبر Git:' : '1. Clone via Git:';
       document.getElementById('cloneCmd').textContent = cloneText;
-      document.getElementById('buildCmd').textContent = `cd ${tool.n} && make build || npm install || cargo build || pip install -e .`;
+      document.getElementById('lblBuild').textContent = isAr ? `2. أمر التثبيت والبناء المباشر (${lang}):` : `2. Build & Install (${lang}):`;
+      document.getElementById('buildCmd').textContent = `cd ${currentTool.n} && make build || npm install || cargo build || pip install -e .`;
       document.getElementById('installSection').style.display = 'block';
 
-      // Related
-      const related = data.tools.filter(t => t.s === tool.s && t.n !== tool.n).slice(0, 6);
+      // Related tools
+      const related = toolData.tools.filter(t => t.s === currentTool.s && t.n !== currentTool.n).slice(0, 6);
       if (related.length > 0) {
+        document.getElementById('relatedHeading').textContent = isAr ? `🔗 أدوات مقترحة ذات صلة في ${suiteName}` : `🔗 Related Tools in ${suiteName}`;
         const grid = document.getElementById('relatedGrid');
         grid.innerHTML = related.map(r => `
-          <a href="tool.html?name=${encodeURIComponent(r.n)}" class="related-card">
+          <a href="tool.html?name=${encodeURIComponent(r.n)}&lang=${currentLang}" class="related-card">
             <h5 style="font-weight:700; margin-bottom:0.35rem;">${r.t}</h5>
             <span style="font-size:0.8rem; color:#64748b; font-family:monospace;">${r.n}</span>
-            <div style="margin-top:auto; padding-top:0.5rem; font-size:0.8rem; color:#0284c7; font-weight:700;">عرض الأداة ←</div>
+            <div style="margin-top:auto; padding-top:0.5rem; font-size:0.8rem; color:#0284c7; font-weight:700;">
+              ${isAr ? 'عرض الشرح والمواصفات ←' : 'View Documentation →'}
+            </div>
           </a>
         `).join('');
         document.getElementById('relatedSection').style.display = 'block';
       }
-    });
+    }
+
+    function copyText(txt, btn) {
+      navigator.clipboard.writeText(txt).then(() => {
+        const orig = btn.innerText;
+        btn.innerText = currentLang === 'ar' ? "✅ تم النسخ!" : "✅ Copied!";
+        setTimeout(() => { btn.innerText = orig; }, 1500);
+      });
+    }
 
     function copyFromEl(id, btn) {
       const text = document.getElementById(id).textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        const orig = btn.innerText;
-        btn.innerText = "✅";
-        setTimeout(() => { btn.innerText = orig; }, 1500);
-      });
+      copyText(text, btn);
     }
   </script>
 </body>

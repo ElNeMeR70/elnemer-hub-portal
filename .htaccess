@@ -7,8 +7,10 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
-# Clean URL for individual tool pages
-# /megahub/tool/tool-name -> /megahub/tool.php?name=tool-name
+# English clean URL: /megahub/en/tool/tool-name
+RewriteRule ^en/tool/([a-zA-Z0-9_\-]+)/?$ tool.php?name=$1&lang=en [L,QSA]
+
+# Standard clean URL: /megahub/tool/tool-name
 RewriteRule ^tool/([a-zA-Z0-9_\-]+)/?$ tool.php?name=$1 [L,QSA]
 
 # Sitemap route
